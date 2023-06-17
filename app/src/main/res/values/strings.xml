@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DrDoc</string>
+    <string name="landing_title"> DrDoc</string>
+    <string name="landing_founder"> P&amp;M.co</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="StartFirstPost">Start by Uploading Your First Post.</string>
+    <string name="stepUpload1">1.Click on the "Upload" button below to get started.</string>
+    <string name="stepUpload2">2.In the provided text field, write your medical description. Feel free to include relevant details, emotions, and insights that you would like to share.</string>
+    <string name="stemUpload3">3.Once youre satisfied with your post, click the "Upload" button to share it with your friends and the wider community.</string>
+</resources>
