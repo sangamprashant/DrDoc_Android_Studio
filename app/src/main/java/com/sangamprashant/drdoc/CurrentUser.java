@@ -9,6 +9,7 @@ public class CurrentUser {
     private String account;
     // Add any other required user information
     private String token;
+    private String Photo;
 
     private CurrentUser() {
         // Private constructor to prevent instantiation
@@ -29,6 +30,10 @@ public class CurrentUser {
         this.account = account;
         // Set any other required user information
         this.token = token;
+
+    }
+    public void setProfile(String Photo){
+        this.Photo = Photo;
     }
 
     public void clearUser() {
@@ -39,6 +44,7 @@ public class CurrentUser {
         this.account = null;
         // Clear any other user information
         this.token = null;
+        this.Photo = null;
     }
 
     // Add getters for user information
@@ -64,5 +70,8 @@ public class CurrentUser {
     // Add getters for other user information
     public String getToken() {
         return token;
+    }
+    public String getPhoto() {
+        return Photo;
     }
 }
