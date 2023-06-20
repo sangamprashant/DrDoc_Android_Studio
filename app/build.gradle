@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.sangamprashant.drdoc"
-        minSdk 16
+        minSdk 19
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -39,5 +39,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.github.Drjacky:ImagePicker:2.3.22'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
 }
