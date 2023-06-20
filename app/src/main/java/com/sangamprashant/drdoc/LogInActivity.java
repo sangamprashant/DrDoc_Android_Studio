@@ -1,6 +1,7 @@
 package com.sangamprashant.drdoc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,8 @@ public class LogInActivity extends AppCompatActivity {
     CurrentUser currentUser = CurrentUser.getInstance();
     TextView gotoSignUp;
     Button signInButton;
-
+    LinearLayout AnimationContainer;
+    CardView LoginContainer;
     EditText userEmailInput, userPasswordInput;
     SharedPreferences sharedPreferences;
 
@@ -42,7 +45,8 @@ public class LogInActivity extends AppCompatActivity {
         signInButton = findViewById(R.id.sign_in_button);
         userEmailInput = findViewById(R.id.InputUserEmail);
         userPasswordInput = findViewById(R.id.InputUserPassword);
-
+        AnimationContainer= findViewById(R.id.SignupLoading);
+        LoginContainer= findViewById(R.id.LoginContainer);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         String userId = sharedPreferences.getString("userId", null);
@@ -75,6 +79,8 @@ public class LogInActivity extends AppCompatActivity {
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(LogInActivity.this, "Please enter all the fields.", Toast.LENGTH_SHORT).show();
                 } else {
+                    AnimationContainer.setVisibility(View.VISIBLE);
+                    LoginContainer.setVisibility(View.GONE);
                     SignInRequest signInRequest = new SignInRequest();
                     signInRequest.sendSignInDetails(email, password);
                 }
@@ -170,6 +176,8 @@ public class LogInActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     } else {
+                        AnimationContainer.setVisibility(View.GONE);
+                        LoginContainer.setVisibility(View.VISIBLE);
                         // Display error message
                         Toast.makeText(LogInActivity.this, "Sign-in failed. Please try again.", Toast.LENGTH_SHORT).show();
                     }

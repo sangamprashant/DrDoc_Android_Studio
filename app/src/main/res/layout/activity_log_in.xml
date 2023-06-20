@@ -9,6 +9,8 @@
     tools:context=".LogInActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/LoginContainer"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -89,5 +91,37 @@
 
 
     </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/SignupLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/accountLogin"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:lottie_rawRes="@raw/searchingfile"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="visible"
+            />
+        <TextView
+            android:id="@+id/statusOfOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verifying your account."
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textColor="#009688"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            />
+    </LinearLayout>
+
+
 
 </RelativeLayout>

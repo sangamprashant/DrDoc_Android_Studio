@@ -7,4 +7,8 @@
     <string name="stepUpload1">1.Click on the "Upload" button below to get started.</string>
     <string name="stepUpload2">2.In the provided text field, write your medical description. Feel free to include relevant details, emotions, and insights that you would like to share.</string>
     <string name="stemUpload3">3.Once youre satisfied with your post, click the "Upload" button to share it with your friends and the wider community.</string>
+    <string name="userNameAvailable">UserName is Available</string>
+    <string name="userNameIsAlreadyUsed">UserName is already used.\nTry with another UserName.</string>
+    <string name="EmailAvailable">Email is Available</string>
+    <string name="EmailIsAlreadyUsed">Email is already used.\nTry with another UserName.</string>
 </resources>
