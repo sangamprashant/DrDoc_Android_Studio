@@ -1,16 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoreFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    tools:context=".HomeFragment">
+    <LinearLayout
+        android:id="@+id/searchContainer"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:background="#0F474747"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="store"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"
+
+        android:gravity="center_horizontal">
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/border_background_post"
+            android:paddingLeft="30dp"
+            android:hint="Enter text" />
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="61dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@id/searchInput"
+            android:layout_alignEnd="@id/searchInput"
+            android:layout_alignBottom="@id/searchInput"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:src="@android:drawable/ic_menu_sort_by_size" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ProductCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchContainer"
+        android:background="#0F474747"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/totalNumberOfProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 Products"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:textColor="#009688"
+            android:background="#08717171"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/ifEmptyProduct"
+        android:layout_below="@id/ProductCount"
+        android:layout_width="match_parent"
+        android:text="No Product Available"
+        android:gravity="center"
+        android:layout_height="match_parent"
         />
 
+    <ScrollView
+        android:id="@+id/ifProductAvailable"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ProductCount"
+        android:paddingTop="0dp">
+
+        <LinearLayout
+            android:id="@+id/forRepeatInVertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:id="@+id/rootProductContainerOfTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+
+                <!--2 element display here -->
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
 </RelativeLayout>
+
+

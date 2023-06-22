@@ -1,5 +1,6 @@
 package com.sangamprashant.drdoc;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -10,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +45,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
-    TextView NameOfUser, UserNameOfUser ,NoOfPostOfUser;
+    TextView NameOfUser, UserNameOfUser, NoOfPostOfUser;
     CircleImageView UserImageBox;
-    LinearLayout PostLinearLayout ,IfEmptyPost;
+    LinearLayout PostLinearLayout, IfEmptyPost;
     CurrentUser currentUser = CurrentUser.getInstance();
     String userId = currentUser.getUserId();
     String name = currentUser.getName();
@@ -53,18 +56,25 @@ public class HomeFragment extends Fragment {
     String account = currentUser.getAccount();
     String Token = currentUser.getToken();
     String PhotoFromUser = currentUser.getPhoto();
+    SharedPreferences sharedPreferences;
+
+    // Pagination variables
+    private int currentPage = 1;
+    private int totalPosts = 0;
+    private boolean isLoading = false;
+    private int visibleThreshold = 5;
+    private int lastVisibleItem, totalItemCount;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         NameOfUser = view.findViewById(R.id.Name_of_user);
         UserNameOfUser = view.findViewById(R.id.Username_of_user);
         UserImageBox = view.findViewById(R.id.LoggedUserImage);
-        PostLinearLayout= view.findViewById(R.id.rootContainerOfPost);
+        PostLinearLayout = view.findViewById(R.id.rootContainerOfPost);
         NoOfPostOfUser = view.findViewById(R.id.noOfPost_of_user);
-        IfEmptyPost=view.findViewById(R.id.ifEmptyPost);
+        IfEmptyPost = view.findViewById(R.id.ifEmptyPost);
         NameOfUser.setText(name);
         UserNameOfUser.setText(userName);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -73,14 +83,34 @@ public class HomeFragment extends Fragment {
         }
         RunOnOnCreate();
         methodToGetPost();
-        getProfileRequest getProfileRequest = new getProfileRequest();
-        getProfileRequest.sendIdDetails();
+        GetProfileRequest GetProfileRequest = new GetProfileRequest();
+        GetProfileRequest.sendIdDetails();
+
+        // Set up the scroll listener for pagination
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PostLinearLayout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View view, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                        // End of the list reached, load more posts
+                        currentPage++;
+                        methodToGetPost();
+                    }
+                }
+            });
+        }
 
         return view;
     }
-    public void RunOnOnCreate(){
+
+    public void RunOnOnCreate() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
+        // Retrieve the photo from SharedPreferences
+        String storedPhoto = sharedPreferences.getString("photo", null);
+
+        Toast.makeText(requireActivity(), String.valueOf(storedPhoto), Toast.LENGTH_SHORT).show();
         Picasso.get()
-                .load(PhotoFromUser)
+                .load(storedPhoto)
                 .placeholder(R.drawable.user) // Set a placeholder image while loading
                 .error(R.drawable.user) // Set an error image if loading fails
                 .into(UserImageBox, new Callback() {
@@ -95,16 +125,19 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
+
     public void methodToGetPost() {
         // Replace API_ENDPOINT with the actual endpoint URL
         String API_ENDPOINT = "https://drdoc-sangamprashant.vercel.app/api/posts";
         // Replace TOKEN with your authentication token if required
         String TOKEN = Token;
 
+        isLoading = true;
+
         OkHttpClient client = new OkHttpClient();
 
         Request.Builder requestBuilder = new Request.Builder()
-                .url(API_ENDPOINT)
+                .url(API_ENDPOINT + "?page=" + currentPage)
                 .get();
 
         // Add authorization header if required
@@ -115,80 +148,86 @@ public class HomeFragment extends Fragment {
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    try {
-                        String responseBody = response.body().string();
-                        JSONArray jsonArray = new JSONArray(responseBody);
-                        if (jsonArray.length() > 0) {
-                            requireActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    NoOfPostOfUser.setText(String.valueOf(jsonArray.length())+" Prescriptions");
-                                    PostLinearLayout.setVisibility(View.VISIBLE);
-                                    IfEmptyPost.setVisibility(View.GONE);
-                                }
-                            });
+                if (isAdded()) {
+                    if (response.isSuccessful()) {
+                        try {
+                            String responseBody = response.body().string();
+                            JSONArray jsonArray = new JSONArray(responseBody);
+                            totalPosts = jsonArray.length();
+                            if (totalPosts > 0) {
+                                requireActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        NoOfPostOfUser.setText(String.valueOf(totalPosts) + " Prescriptions");
+                                        PostLinearLayout.setVisibility(View.VISIBLE);
+                                        IfEmptyPost.setVisibility(View.GONE);
+                                    }
+                                });
+                            }
+
+                            // Loop through the JSON array and create post items
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject postObject = jsonArray.getJSONObject(i);
+                                String postTitle = postObject.getString("body");
+                                String postPic = postObject.getString("photo");
+                                String postDate = postObject.getString("createdAt");
+
+                                // Add other required data
+
+                                // Inflate the item_post.xml layout for each post
+                                final View postItemView = getLayoutInflater().inflate(R.layout.post_layout, null);
+
+                                // Set data for the post item
+                                final TextView titleTextView = postItemView.findViewById(R.id.postTitle);
+                                final ImageFilterView ImageViewPost = postItemView.findViewById(R.id.postImage);
+                                final TextView dateTextView = postItemView.findViewById(R.id.postTime);
+                                requireActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Picasso.get()
+                                                .load(postPic)
+                                                .placeholder(R.drawable.file)
+                                                .error(R.drawable.file)
+                                                .into(ImageViewPost, new Callback() {
+                                                    @Override
+                                                    public void onSuccess() {
+                                                        // Photo loaded successfully
+                                                    }
+
+                                                    @Override
+                                                    public void onError(Exception e) {
+                                                        // Handle error while loading photo
+                                                    }
+                                                });
+                                    }
+                                });
+                                titleTextView.setText(postTitle);
+                                dateTextView.setText(postDate);
+                                // Set other data for the post item
+
+                                // Add the post item to the LinearLayout
+                                requireActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        PostLinearLayout.addView(postItemView);
+                                    }
+                                });
+                            }
+
+                            isLoading = false;
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
-                        // Loop through the JSON array and create post items
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject postObject = jsonArray.getJSONObject(i);
-                            String postTitle = postObject.getString("body");
-                            String postPic = postObject.getString("photo");
-                            String postDate = postObject.getString("createdAt");
-
-                            // Add other required data
-
-                            // Inflate the item_post.xml layout for each post
-                            final View postItemView = getLayoutInflater().inflate(R.layout.post_layout, null);
-
-                            // Set data for the post item
-                            final TextView titleTextView = postItemView.findViewById(R.id.postTitle);
-                            final ImageFilterView ImageViewPost = postItemView.findViewById(R.id.postImage);
-                            final TextView dateTextView = postItemView.findViewById(R.id.postTime);
-                            requireActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Picasso.get()
-                                            .load(postPic)
-                                            .placeholder(R.drawable.file)
-                                            .error(R.drawable.file)
-                                            .into(ImageViewPost, new Callback() {
-                                                @Override
-                                                public void onSuccess() {
-                                                    // Photo loaded successfully
-                                                }
-
-                                                @Override
-                                                public void onError(Exception e) {
-                                                    // Handle error while loading photo
-                                                }
-                                            });
-                                }
-                            });
-                            titleTextView.setText(postTitle);
-                            dateTextView.setText(postDate);
-                            // Set other data for the post item
-
-                            // Add the post item to the LinearLayout
-                            requireActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    PostLinearLayout.addView(postItemView);
-                                }
-                            });
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    } else {
+                        // Handle error
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(requireActivity(), "Failed to fetch posts", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
-                } else {
-                    // Handle error
-                    requireActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(requireActivity(), "Failed to fetch posts", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }
             }
 
@@ -205,11 +244,9 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+    public class GetProfileRequest {
 
-
-    public class getProfileRequest {
-
-        private  final String API_URL = "https://drdoc-sangamprashant.vercel.app/api/user/"+ userId +"/profilephoto";
+        private final String API_URL = "https://drdoc-sangamprashant.vercel.app/api/user/" + userId + "/profilephoto";
 
         public void sendIdDetails() {
             new AsyncTask<Void, Void, Response>() {
@@ -237,20 +274,24 @@ public class HomeFragment extends Fragment {
                 }
 
                 @Override
-                protected void onPostExecute(Response response) {
+                public void onPostExecute(Response response) {
                     if (response != null && response.isSuccessful()) {
                         try {
                             String responseBody = response.body().string();
                             JSONObject responseJson = new JSONObject(responseBody);
 
                             // Extract the token and user data from the response
-                            String Photo = responseJson.getString("photo");
-                            if (Photo != null && !Photo.isEmpty()) {
-                                currentUser.setProfile(Photo);
+                            String photo = responseJson.getString("photo");
+                            if (photo != null && !photo.isEmpty()) {
+                                currentUser.setProfile(photo);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("photo", photo);
+
+
                                 Picasso.get()
-                                        .load(Photo)
-                                        .placeholder(R.drawable.user) // Set a placeholder image while loading
-                                        .error(R.drawable.user) // Set an error image if loading fails
+                                        .load(photo)
+                                        .placeholder(R.drawable.user)
+                                        .error(R.drawable.user)
                                         .into(UserImageBox, new Callback() {
                                             @Override
                                             public void onSuccess() {
@@ -263,10 +304,8 @@ public class HomeFragment extends Fragment {
                                             }
                                         });
                             } else {
-                                UserImageBox.setImageResource(R.drawable.user); // Set a default image if photoUrl is empty or null
+                                UserImageBox.setImageResource(R.drawable.user);
                             }
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
