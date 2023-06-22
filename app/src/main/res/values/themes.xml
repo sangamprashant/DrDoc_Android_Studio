@@ -3,6 +3,7 @@
     <style name="Base.Theme.DRDOC" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/appTheme</item>
     </style>
 
     <style name="Theme.DRDOC" parent="Base.Theme.DRDOC" />

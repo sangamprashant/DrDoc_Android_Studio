@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".UploadFragment">
 
     <ScrollView
-
+android:id="@+id/containerForUpload"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -20,31 +22,74 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
+            android:paddingTop="20dp"
+            android:background="@drawable/border_background_post"
             >
-            <ImageView
+
+            <ImageButton
                 android:padding="5dp"
-                android:background="@drawable/box_light_black"
+                android:background="@drawable/app_theme_border"
                 android:id="@+id/ImageToChange"
                 android:layout_gravity="center"
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/addimg"
                 android:layout_marginBottom="20dp"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true" />
+            <EditText
+                android:id="@+id/titleInput"
+                android:layout_width="350dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:textSize="20dp"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:hint="Enter prescription's title."
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/upload_input_background"
+                />
             <Button 
                 android:id="@+id/btnUploadProfilePic"
                 android:background="@drawable/button_blue"
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Upload"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textAllCaps="false"
                 android:layout_marginBottom="10dp"
                 />
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:id="@+id/loadingContainer"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:lottie_rawRes="@raw/fileupload"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uploading.."
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textColor="@color/appTheme"
+            />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

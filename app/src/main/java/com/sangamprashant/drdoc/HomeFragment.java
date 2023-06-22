@@ -107,8 +107,6 @@ public class HomeFragment extends Fragment {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
         // Retrieve the photo from SharedPreferences
         String storedPhoto = sharedPreferences.getString("photo", null);
-
-        Toast.makeText(requireActivity(), String.valueOf(storedPhoto), Toast.LENGTH_SHORT).show();
         Picasso.get()
                 .load(storedPhoto)
                 .placeholder(R.drawable.user) // Set a placeholder image while loading

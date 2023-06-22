@@ -83,15 +83,12 @@ public class StoreFragment extends Fragment {
             }
         });
 
-        fetchAllProducts();
+
         methodToGetPost();
 
         return view;
     }
 
-    private void fetchAllProducts() {
-        showToast("Product run");
-    }
 
     public void methodToGetPost() {
         // Replace API_ENDPOINT with the actual endpoint URL
