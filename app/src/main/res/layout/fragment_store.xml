@@ -12,11 +12,9 @@
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/searchContainer"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:paddingRight="16dp"
+            android:paddingTop="10dp"
             android:paddingBottom="16dp"
-
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -28,7 +26,7 @@
                 android:layout_alignParentTop="true"
                 android:background="@drawable/app_theme_border"
                 android:paddingLeft="30dp"
-                android:hint="Enter text" />
+                android:hint="Search product.." />
 
             <ImageButton
                 android:id="@+id/menuButton"
@@ -37,7 +35,7 @@
                 android:layout_alignTop="@id/searchInput"
                 android:layout_alignEnd="@id/searchInput"
                 android:layout_alignBottom="@id/searchInput"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:src="@android:drawable/ic_menu_sort_by_size" />
         </LinearLayout>
@@ -46,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/searchContainer"
-            android:background="#0F474747"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/totalNumberOfProducts"
@@ -54,9 +51,10 @@
                 android:layout_height="wrap_content"
                 android:text="0 Products"
                 android:paddingLeft="20dp"
+                android:fontFamily="@font/segoeuibold"
                 android:paddingBottom="5dp"
                 android:textColor="#009688"
-                android:background="#08717171"/>
+/>
 
         </LinearLayout>
     </LinearLayout>
@@ -66,6 +64,7 @@
         android:layout_width="match_parent"
         android:text="No Product Available"
         android:gravity="center"
+        android:fontFamily="@font/segoeuibold"
         android:layout_height="match_parent"
         />
 

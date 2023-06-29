@@ -36,6 +36,7 @@
                 <TextView
                     android:id="@+id/postTitle"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/segoeuibold"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="medical caption should be written to eloborate the prescription."

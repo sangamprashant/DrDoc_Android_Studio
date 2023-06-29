@@ -60,6 +60,7 @@ android:id="@+id/containerForUpload"
                 android:layout_gravity="center"
                 android:text="Upload"
                 android:textSize="20dp"
+                android:fontFamily="@font/segoeuibold"
                 android:textAllCaps="false"
                 android:layout_marginBottom="10dp"
                 />

@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/landing_title"
         android:textColor="#009688"
+        android:fontFamily="@font/segoeuibold"
         android:gravity="center"
         android:textSize="60dp" />
 

@@ -47,6 +47,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:textSize="20dp"
+                        android:fontFamily="@font/segoeuibold"
                         android:text="Name"
                         />
                     <TextView
@@ -89,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/StartFirstPost"
                     android:textSize="15dp"
+                    android:fontFamily="@font/segoeuibold"
                     android:gravity="center"
                     />
                 <TextView

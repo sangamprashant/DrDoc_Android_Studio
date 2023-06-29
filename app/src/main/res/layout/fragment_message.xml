@@ -3,14 +3,216 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MessageFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/contactContainer"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:id="@+id/headerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_for_search_product"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ProductCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/totalNumberOfProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contacts"
+                    android:paddingLeft="20dp"
+                    android:paddingBottom="5dp"
+                    android:fontFamily="@font/segoeuibold"
+                    android:textColor="#009688"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:background="#08717171"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Message"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"
-        />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/searchContainer"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal">
+                <EditText
+                    android:id="@+id/searchInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/app_theme_border"
+                    android:paddingLeft="30dp"
+                    android:hint="Search user" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <ScrollView
+            android:id="@+id/containerForUsers"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_below="@id/headerContainer"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:id="@+id/postLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:padding="5dp"
+                    android:background="@drawable/border_background_post"
+                    app:cardCornerRadius="20dp">
+                    <LinearLayout
+                        android:id="@+id/containerToPopulate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            android:id="@+id/ifEmptyUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="visible"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No user to show."
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/mainHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/background_for_search_product"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/navcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#00009688"
+                    android:src="@drawable/arrow_back"/>
+                <LinearLayout
+
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/user"
+                        app:civ_border_color="#009688"
+                        app:civ_border_overlay="true"
+                        app:civ_border_width="2dp" />
+
+
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bookmark_add"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_below="@id/navcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/segoeuibold"
+                android:textSize="30dp"
+                android:text="User Name"/>
+
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/mainHeader"
+            android:layout_above="@id/linearLayout"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/write_message_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/messageBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="75"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/app_theme_border"
+                android:hint="Type a message..."
+                android:padding="8dp" />
+
+            <ImageView
+                android:id="@+id/sendButton"
+                android:layout_width="0dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="25"
+                android:padding="8dp"
+                android:src="@drawable/user" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
 
 </RelativeLayout>

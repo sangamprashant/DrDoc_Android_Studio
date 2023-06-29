@@ -152,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SignIn"
+                    android:fontFamily="@font/segoeuibold"
                     android:textSize="15dp"
                     />
 
@@ -225,6 +226,7 @@
             android:text="Sending OTP to mail."
             android:textAlignment="center"
             android:gravity="center_horizontal"
+            android:fontFamily="@font/segoeuibold"
             android:textColor="#009688"
             android:textSize="30dp"
             android:layout_marginTop="20dp"

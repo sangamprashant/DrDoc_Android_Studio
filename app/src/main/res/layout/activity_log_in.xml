@@ -84,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="SignUp"
                     android:textSize="15dp"
+                    android:fontFamily="@font/segoeuibold"
                     />
 
             </LinearLayout>
