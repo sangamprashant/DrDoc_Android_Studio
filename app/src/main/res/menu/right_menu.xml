@@ -18,12 +18,14 @@
         <item
             android:id="@+id/nav_about"
             android:title="About Us"/>
+
     </group>
     <item
         android:title="">
         <menu>
             <item
                 android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
                 android:title="Logout"/>
         </menu>
     </item>

@@ -9,20 +9,22 @@
     android:background="@drawable/background_for_search_product"
 
 >
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/user"
         />
         <TextView
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:text="Android Knowledge"
+            android:textColor="@color/appTheme"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:text="contact@androidknowledge.com"
         android:textSize="14sp"
+        android:textColor="@color/appTheme"
         android:layout_marginBottom="16dp"/>
 </LinearLayout>
