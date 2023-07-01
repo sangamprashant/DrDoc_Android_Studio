@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/upload_input_background"
+    >
+    <TextView
+        android:id="@+id/aboutUsHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:fontFamily="@font/segoeuibold"
+        android:textColor="@color/appTheme"
+        android:textSize="30dp"
+
+        />
+    <ScrollView
+        android:id="@+id/scrollable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/aboutUsHeading"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

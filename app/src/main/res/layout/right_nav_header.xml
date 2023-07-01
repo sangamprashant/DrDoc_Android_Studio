@@ -17,13 +17,13 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android Knowledge"
+        android:text="Sanagm Prashant Srivastav"
             android:textColor="@color/appTheme"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="contact@androidknowledge.com"
+        android:text="sangamsrvastav@gmail.com"
         android:textSize="14sp"
         android:textColor="@color/appTheme"
         android:layout_marginBottom="16dp"/>
