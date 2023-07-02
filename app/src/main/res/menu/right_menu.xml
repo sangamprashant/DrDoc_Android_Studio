@@ -3,15 +3,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn = "navigation_view">
-    <group
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_about"
-            android:title="About Us"/>
-
-    </group>
     <item
-        android:title="">
+        android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/user"
+                android:title="Profile"/>
+            <item
+                android:id="@+id/nav_change_account"
+                android:icon="@drawable/switch_account"
+                android:title="Change Account Type"/>
+        </menu>
+    </item>
+    <item
+        android:title="Shopping">
+
+        <menu>
+            <item
+                android:id="@+id/nav_cart"
+                android:icon="@drawable/shopping_cart"
+                android:title="Cart"/>
+            <item
+                android:id="@+id/nav_my_order"
+                android:icon="@drawable/order"
+                android:title="My order"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/sellerOption"
+        android:title="Seller"
+        android:visible="true">
+        <menu>
+            <item
+                android:id="@+id/nav_dashboard"
+                android:icon="@drawable/space_dashboard"
+                android:title="Dashboard"/>
+            <item
+                android:id="@+id/nav_add_product"
+                android:icon="@drawable/add_product"
+                android:title="Add product"/>
+            <item
+                android:id="@+id/nav_view_my_product"
+                android:icon="@drawable/preview"
+                android:title="View my product"/>
+        </menu>
+    </item>
+    <item
+        android:title="Organization">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/about"
+                android:title="About Us"/>
+        </menu>
+    </item>
+    <item
+        android:title="Regional">
         <menu>
             <item
                 android:id="@+id/nav_logout"
