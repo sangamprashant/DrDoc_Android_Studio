@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SellerDashboardActivity">
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:padding="20dp"
+        android:textColor="@color/appTheme"
+        android:textSize="30dp"/>
+    <View
+        android:layout_below="@id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="visible"
+        android:background="@color/appTheme"
+        />
+
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_below="@id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- First layout -->
+        <LinearLayout
+            android:id="@+id/ConfirmBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/upload_input_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/confirm" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="Confirmed" />
+        </LinearLayout>
+
+        <!-- Second layout -->
+        <LinearLayout
+            android:id="@+id/PackingBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/upload_input_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/pack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="Packing" />
+        </LinearLayout>
+
+        <!-- Third layout -->
+        <LinearLayout
+            android:id="@+id/ShippedBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/upload_input_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/ship" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="Shipped" />
+        </LinearLayout>
+
+        <!-- Fourth layout -->
+        <LinearLayout
+            android:id="@+id/DeliveredBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/upload_input_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/deliver" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="Delivered" />
+        </LinearLayout>
+
+        <!-- Fifth layout -->
+        <LinearLayout
+            android:id="@+id/CanceledBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/upload_input_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/cancel_photo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="Canceled" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/optionOpenText"
+        android:layout_below="@id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirmed"
+        android:paddingLeft="20dp"
+        android:textColor="@color/appTheme"
+        android:paddingTop="5dp"
+        android:textSize="20dp"/>
+
+    <ScrollView
+        android:id="@+id/itemsContainer"
+        android:layout_below="@id/optionOpenText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/Confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ConfirmItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/upload_input_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Address: Siddharth nagar" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount paid:00" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+
+                        android:padding="5dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ConfirmItemsImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_marginVertical="20dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/user"
+                            app:civ_border_color="#009688"
+                            app:civ_border_overlay="true"
+                            app:civ_border_width="2dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/ConfirmItemsTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoeuibold"
+                                android:padding="5dp"
+                                android:text="Cart Title" />
+
+                            <TextView
+                                android:id="@+id/ConfirmItemsDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text=" Customer Name :name surname" />
+
+
+                            <TextView
+                                android:id="@+id/ConfirmItemsCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:34" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current order status" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Change To" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Confirmed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Packing"
+                            android:textColor="#FF0303" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/Packing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/PackingItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/upload_input_background"
+                    android:padding="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Address: Siddharth nagar"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount paid:00"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/PackingItemsImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/user"
+                            android:layout_marginVertical="20dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#009688"
+                            app:civ_border_overlay="true"
+                            android:scaleType="centerCrop"
+                            />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:layout_weight="3"
+                            >
+                            <TextView
+                                android:id="@+id/PackingItemsTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Cart Title"
+                                android:padding="5dp"
+                                android:fontFamily="@font/segoeuibold"
+                                />
+                            <TextView
+                                android:id="@+id/PackingItemsDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" Customer Name :name surname"
+                                android:padding="5dp"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/PackingItemsCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:34"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current order status"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Change To"
+                            android:layout_alignParentEnd="true"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Packing"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shipped"
+                            android:textColor="#FF0303"
+                            android:layout_alignParentEnd="true"
+                            />
+                    </RelativeLayout>
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/Shipped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ShippedItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/upload_input_background"
+                    android:padding="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Address: Siddharth nagar"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount paid:00"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ShippedItemsImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/user"
+                            android:layout_marginVertical="20dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#009688"
+                            app:civ_border_overlay="true"
+                            android:scaleType="centerCrop"
+                            />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:layout_weight="3"
+                            >
+                            <TextView
+                                android:id="@+id/ShippedItemsTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Cart Title"
+                                android:padding="5dp"
+                                android:fontFamily="@font/segoeuibold"
+                                />
+                            <TextView
+                                android:id="@+id/ShippedItemsDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" Customer Name :name surname"
+                                android:padding="5dp"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/ShippedItemsCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:34"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current order status"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Change To"
+                            android:layout_alignParentEnd="true"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shipped"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivered"
+                            android:textColor="#FF0303"
+                            android:layout_alignParentEnd="true"
+                            />
+                    </RelativeLayout>
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/Delivered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/DeliveredItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/upload_input_background"
+                    android:padding="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Address: Siddharth nagar"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount paid:00"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/DeliveredItemsImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/user"
+                            android:layout_marginVertical="20dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#009688"
+                            app:civ_border_overlay="true"
+                            android:scaleType="centerCrop"
+                            />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:layout_weight="3"
+                            >
+                            <TextView
+                                android:id="@+id/DeliveredItemsTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Cart Title"
+                                android:padding="5dp"
+                                android:fontFamily="@font/segoeuibold"
+                                />
+                            <TextView
+                                android:id="@+id/DeliveredItemsDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" Customer Name :name surname"
+                                android:padding="5dp"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/DeliveredItemsCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:34"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current order status"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivered"
+                            />
+                    </RelativeLayout>
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Canceled"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/CanceledItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/upload_input_background"
+                    android:padding="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Address: Siddharth nagar"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total amount paid:00"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/CanceledItemsImage"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/user"
+                            android:layout_marginVertical="20dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#009688"
+                            app:civ_border_overlay="true"
+                            android:scaleType="centerCrop"
+                            />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:layout_weight="3"
+                            >
+                            <TextView
+                                android:id="@+id/CanceledItemsTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Cart Title"
+                                android:padding="5dp"
+                                android:fontFamily="@font/segoeuibold"
+                                />
+                            <TextView
+                                android:id="@+id/CanceledItemsDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" Customer Name :name surname"
+                                android:padding="5dp"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/CanceledItemsCount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:34"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Current order status"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Canceled"
+                            />
+                    </RelativeLayout>
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

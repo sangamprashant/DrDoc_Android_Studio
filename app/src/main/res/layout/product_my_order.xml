@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/myOrderItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/upload_input_background"
+        android:padding="20dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OrderId:#43354556254622466ddb43564"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delivery Address: Siddharth nagar"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total amount paid:00"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cartItemsImage"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/user"
+                android:layout_marginVertical="20dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#009688"
+                app:civ_border_overlay="true"
+                android:scaleType="centerCrop"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_weight="3"
+                >
+                <TextView
+                    android:id="@+id/cartItemsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cart Title"
+                    android:padding="5dp"
+                    android:fontFamily="@font/segoeuibold"
+                    />
+                <TextView
+                    android:id="@+id/cartItemsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cart Description"
+                    android:padding="5dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/cartItemsCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity:34"
+                    />
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total item price:000"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track your order"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textColor="#FF0303"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:min="0"
+            android:max="100"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="50"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delivered"
+            />
+
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.sangamprashant.drdoc;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -41,6 +42,21 @@ public class SettingsFragment extends Fragment {
                 }
                 if (item.getItemId() == R.id.nav_change_account) {
                     showChangeAccountDialog();
+                    return true;
+                }
+                if (item.getItemId() == R.id.nav_cart) {
+                    Intent intent = new Intent(requireActivity(), CartActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                if (item.getItemId() == R.id.nav_my_order) {
+                    Intent intent = new Intent(requireActivity(), MyOrdersActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                if (item.getItemId() == R.id.nav_dashboard) {
+                    Intent intent = new Intent(requireActivity(),SellerDashboardActivity.class);
+                    startActivity(intent);
                     return true;
                 }
                 if (item.getItemId() == R.id.nav_logout) {
