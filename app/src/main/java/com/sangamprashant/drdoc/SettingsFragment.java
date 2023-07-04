@@ -59,6 +59,16 @@ public class SettingsFragment extends Fragment {
                     startActivity(intent);
                     return true;
                 }
+                if (item.getItemId() == R.id.nav_add_product) {
+                    Intent intent = new Intent(requireActivity(),ProductAddActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                if (item.getItemId() == R.id.nav_view_my_product) {
+                    Intent intent = new Intent(requireActivity(),ProductSellerActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
                 if (item.getItemId() == R.id.nav_logout) {
                     showLogoutDialog();
                     return true;

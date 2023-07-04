@@ -17,6 +17,9 @@
         android:theme="@style/Theme.DRDOC"
         tools:targetApi="31">
         <activity
+            android:name=".ProductSellerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductAddActivity"
             android:exported="false" />
         <activity

@@ -45,9 +45,188 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:paddingHorizontal="20dp"
             >
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Title for product"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:inputType="text"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Marked price"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Marked price"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:inputType="number"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product type"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Tagline"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:inputType="text"
+                    android:textSize="25dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tagline"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Tagline"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="20dp"
+                    android:inputType="text"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sales price"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Sales price"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="20dp"
+                    android:inputType="number"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stocks available"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Stock available"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:inputType="number"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select the  image"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <ImageButton
+                    android:padding="5dp"
+                    android:background="@drawable/app_theme_border"
+                    android:id="@+id/ImageToUpload"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/addimg"
+                    android:layout_marginBottom="20dp"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@color/appTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/upload_input_background"
+                    android:hint="Description"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:inputType="text"
+                    android:textSize="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginVertical="5dp"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload product"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="20dp"
+                    android:layout_marginVertical="5dp"
+                    />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
